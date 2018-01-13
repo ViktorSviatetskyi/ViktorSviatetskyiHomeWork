@@ -20,7 +20,7 @@ public class _04_TwoSpeeds {
             } else if (mpersec> kmperhour){
                 System.out.println("M/s > km/h   "+ mpersec + " > "+  kmperhour);
             } else {
-                System.out.println("km/h = m/s " + kmperhour + " > "+ mpersec);
+                System.out.println("km/h = m/s " + kmperhour + " = "+ mpersec);
             }
 
         } else System.out.println("Speed must be > 0");
