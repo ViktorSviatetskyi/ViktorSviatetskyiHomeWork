@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.Arrays;
+
 public class ArrayUtils {
 
     public static int [] createAndFillArray (int size) {
@@ -50,8 +52,8 @@ public class ArrayUtils {
         }
         return max;
     }
-    public static double arrAverage (int [] arrey){
-        int [] mas = arrey;
+    public static double arrAverage (int [] array){
+        int [] mas = array;
         double sum=0;
         for (int i = 0; i< mas.length; i++){
             sum = sum + mas[i];
@@ -59,5 +61,55 @@ public class ArrayUtils {
         double average = sum/mas.length;
         return average;
     }
+    public static int[] arrSwap (int[] array)  {
+    int [] mas = array;
+        int min = ArrayUtils.findMin(mas);
+        int max = ArrayUtils.findMax(mas);
+    for (int i = 0; i< mas.length; i++) {
+        if (mas[i] == min) {
+            mas[i] = max;
+        }
+        else if (mas[i] == max) {
+            mas[i] = min;
+        }
+     }
+     return mas;
+    }
+
+    public static int countNumInNum(int number1, int numberFind) {
+        int num = number1;
+        int count = 0;
+        while (num > 0) {
+            if ((num % 10) == numberFind)
+                count++;
+            num = num / 10;
+        }
+        return count;
+    }
+
+    public static int countNumsInArr(int[] array, int number){
+        int [] mas = array;
+        int num = number;
+        int resalt = 0;
+        for (int i = 0; i < mas.length; i++) {
+            resalt += ArrayUtils.countNumInNum(mas[i], number);
+            }
+     return resalt;
+    }
+
+    public static int[] arrSumm (int[] array1, int[] array2){
+
+        int[] mas1 = array1;
+        int[] mas2 = array2;
+        int[] masRes= new int [mas1.length];
+        for (int i = 0; i <mas1.length ; i++) {
+            for (int j = 0; j < mas2.length; j++) {
+                    masRes[i] = mas1[i]+mas2[i];
+            }
+
+        }
+        return masRes;
+    }
+
 }
 
