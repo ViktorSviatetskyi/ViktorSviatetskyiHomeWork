@@ -1,79 +1,86 @@
 package utils;
 
 import java.util.Arrays;
+import java.util.BitSet;
+import java.util.Scanner;
 
 public class ArrayUtils {
 
-    public static int [] createAndFillArray (int size) {
+    public static int[] createAndFillArray(int size) {
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
-          array[i] = i;
+            array[i] = i;
         }
-    return array;
+        return array;
     }
-    public static void printArray (int[] array) {
-        for (int i = 0; i< array.length; i++){
+
+    public static void printArray(int[] array) {
+        for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
     }
-    public static void printArray (String[] array) {
-        for (int i = 0; i< array.length; i++){
+
+    public static void printArray(String[] array) {
+        for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
     }
-    public static int [] createAndFillRandomArray (int size) {
+
+    public static int[] createAndFillRandomArray(int size) {
         int[] array = new int[size];
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = (int) (Math.random()*100);
+            array[i] = (int) (Math.random() * 100);
         }
-    return array;
+        return array;
     }
 
-    public static int findMin (int [] array){
-        int [] mas = array;
+    public static int findMin(int[] array) {
+        int[] mas = array;
         int min = mas[0];
 
         for (int i = 0; i < mas.length; i++) {
-            if (mas[i]< min){
+            if (mas[i] < min) {
                 min = mas[i];
             }
         }
         return min;
     }
-    public static int findMax (int [] array){
-        int [] mas = array;
+
+    public static int findMax(int[] array) {
+        int[] mas = array;
         int max = mas[0];
 
         for (int i = 0; i < mas.length; i++) {
-            if (mas[i]> max){
+            if (mas[i] > max) {
                 max = mas[i];
             }
         }
         return max;
     }
-    public static double arrAverage (int [] array){
-        int [] mas = array;
-        double sum=0;
-        for (int i = 0; i< mas.length; i++){
+
+    public static double arrAverage(int[] array) {
+        int[] mas = array;
+        double sum = 0;
+        for (int i = 0; i < mas.length; i++) {
             sum = sum + mas[i];
         }
-        double average = sum/mas.length;
+        double average = sum / mas.length;
         return average;
     }
-    public static int[] arrSwap (int[] array)  {
-    int [] mas = array;
+
+    public static int[] arrSwap(int[] array) {
+        int[] mas = array;
         int min = ArrayUtils.findMin(mas);
         int max = ArrayUtils.findMax(mas);
-    for (int i = 0; i< mas.length; i++) {
-        if (mas[i] == min) {
-            mas[i] = max;
+        for (int i = 0; i < mas.length; i++) {
+            if (mas[i] == min) {
+                mas[i] = max;
+            } else if (mas[i] == max) {
+                mas[i] = min;
+            }
         }
-        else if (mas[i] == max) {
-            mas[i] = min;
-        }
-     }
-     return mas;
+        return mas;
     }
 
     public static int countNumInNum(int number1, int numberFind) {
@@ -87,28 +94,64 @@ public class ArrayUtils {
         return count;
     }
 
-    public static int countNumsInArr(int[] array, int number){
-        int [] mas = array;
+    public static int countNumsInArr(int[] array, int number) {
+        int[] mas = array;
         int num = number;
         int resalt = 0;
         for (int i = 0; i < mas.length; i++) {
             resalt += ArrayUtils.countNumInNum(mas[i], number);
-            }
-     return resalt;
+        }
+        return resalt;
     }
 
-    public static int[] arrSumm (int[] array1, int[] array2){
+    public static int[] arrSumm(int[] array1, int[] array2) {
 
         int[] mas1 = array1;
         int[] mas2 = array2;
-        int[] masRes= new int [mas1.length];
-        for (int i = 0; i <mas1.length ; i++) {
+        int[] masRes = new int[mas1.length];
+        for (int i = 0; i < mas1.length; i++) {
             for (int j = 0; j < mas2.length; j++) {
-                    masRes[i] = mas1[i]+mas2[i];
+                masRes[i] = mas1[i] + mas2[i];
             }
 
         }
         return masRes;
+    }
+
+    public static int[] sortArr(int[] array) {
+        int[] arr = array;
+        for (int i = 0; i < arr.length; i++) {
+            int min = arr[i];
+            int imin = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < min) {
+                    min = arr[j];
+                    imin = j;
+                }
+            }
+            if (i != imin) {
+                int temp = arr[i];
+                arr[i] = arr[imin];
+                arr[imin] = temp;
+            }
+        }
+        return arr;
+    }
+
+
+    public static int[] genSixRandNum() {
+        int count = 6;
+        int[] arr = new int[count];
+        while (count > 0) {
+            int num = (int) ((Math.random() * 42) + 1);
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == num)
+                    break;
+                if (i == arr.length - 1)
+                    arr[--count] = num;
+            }
+        }
+        return arr;
     }
 
 }
